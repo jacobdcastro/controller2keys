@@ -7,7 +7,6 @@ use std::{thread, time::Duration};
 #[cfg(target_os = "macos")]
 use libc;
 
-// define our button to key mappings
 lazy_static! {
     static ref BUTTON_MAP: HashMap<Button, enigo::Key> = {
         let mut m = HashMap::new();
@@ -72,10 +71,7 @@ fn main() {
         libc::pthread_setschedparam(thread_id, policy, &param);
     }
 
-    // initialize gamepad system
     let mut gilrs = Gilrs::new().expect("failed to initialize gilrs");
-
-    // initialize keyboard simulator
     let mut enigo = Enigo::new();
 
     // reduce sleep time even further for more frequent polling
@@ -87,7 +83,6 @@ fn main() {
     let mut active_gamepad = None;
 
     loop {
-        // update active gamepad
         if active_gamepad.is_none() {
             active_gamepad = gilrs.gamepads().next().map(|(id, _)| id);
         }
