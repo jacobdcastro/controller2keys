@@ -1,0 +1,14 @@
+[package]
+name = "controller2keys"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+gilrs = "0.10.2"      # for gamepad/controller input
+enigo = "0.1.3"       # for keyboard simulation
+lazy_static = "1.4.0" # for static mappings
+libc = "0.2"
+
+[dependencies.windows]
+version = "0.48"
+features = ["Win32_System_Threading"]
